@@ -10,6 +10,9 @@ $pdf->SetAutoPageBreak(TRUE, PDF_MARGIN_BOTTOM);
 
 $pdf->AddPage();
 
+// Page color
+$pdf->Rect(0, 0, $pdf->getPageWidth(), $pdf->getPageHeight(), 'DF', "",  array(0, 255, 255));
+
 $pdf->SetFont('times', 'BI', 20);
 $txt = 
 <<<EOD
