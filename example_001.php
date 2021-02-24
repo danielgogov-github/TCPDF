@@ -13,13 +13,36 @@ $pdf->AddPage();
 // Page color
 $pdf->Rect(0, 0, $pdf->getPageWidth(), $pdf->getPageHeight(), 'DF', "",  array(0, 255, 255));
 
-$pdf->SetFont('times', 'BI', 20);
-$txt = 
-<<<EOD
-Lorem ipsum
+$pdf->setX(20);
+$pdf->setY(20);
 
-Lorem ipsum dolor, sit amet consectetur adipisicing elit. Labore, perferendis. Veritatis, recusandae velit aspernatur sint totam eum aliquid dicta praesentium, labore quam eos magnam nemo ea quod dolorem, vel sapiente.
-EOD;
-$pdf->Write(0, $txt, '', 0, 'C', true, 0, false, false, 0);
+$border = 1;
+$align = 'L';
+$fill = false;
+$ln = 1;
+
+$pdf->SetFont('times', 'BI', 20);
+$text = 'Lorem ipsum Lorem ipsum Lorem ipsum';
+
+$pdf->MultiCell(0, 0, $text, $border, $align, $fill, $ln, $pdf->getX(), $pdf->getY());
+$pdf->MultiCell(0, 0, $text, $border, $align, $fill, $ln, $pdf->getX(), $pdf->getY());
+$pdf->MultiCell(0, 0, $text, $border, $align, $fill, $ln, $pdf->getX(), $pdf->getY());
+
+$pdf->Cell(0, 10, 'Page '.$pdf->getAliasNumPage().'/'.$pdf->getAliasNbPages(), 0, false, 'C', 0, '', 0, false, 'T', 'M');
+$pdf->AddPage();
+$pdf->Cell(0, 10, 'Page '.$pdf->getAliasNumPage().'/'.$pdf->getAliasNbPages(), 0, false, 'C', 0, '', 0, false, 'T', 'M');
+
+// $PgNo= "This is the page " . $pdf->getAliasNumPage() . " of " . $pdf->getAliasNbPages();
+
+
+
+// $txt = 
+// <<<EOD
+// Lorem ipsum
+
+// Lorem ipsum dolor, sit amet consectetur adipisicing elit. Labore, perferendis. Veritatis, recusandae velit aspernatur sint totam eum aliquid dicta praesentium, labore quam eos magnam nemo ea quod dolorem, vel sapiente.
+// EOD;
+// $pdf->Write(0, $txt, '', 0, 'C', true, 0, false, false, 0);
+
 
 $pdf->Output('example_001.pdf');
